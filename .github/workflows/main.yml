@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: Iddix/alertmanager-webhook-signald:latest
+          tags: iddix/alertmanager-webhook-signald:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
