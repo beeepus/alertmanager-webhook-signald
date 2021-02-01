@@ -21,6 +21,12 @@ var typeMap = map[string]Typed{
 	"message":    &Message{},
 }
 
+type JSONAddress struct {
+	Number string `json:"number"`
+	Relay  string `json:"relay,omitempty"`
+	UUID   string `json:"uuid,omitempty"`
+}
+
 type Request struct {
 	Type string `json:"type"`
 	ID   string `json:"id"`
@@ -36,10 +42,10 @@ func (r *Request) SetID(id int) {
 
 type Send struct {
 	Request
-	Username         string `json:"username"`
-	RecipientNumber  string `json:"recipientNumber,omitempty"`
-	RecipientGroupID string `json:"recipientGroupId,omitempty"`
-	MessageBody      string `json:"messageBody"`
+	Username         string      `json:"username"`
+	RecipientAddress JSONAddress `json:"recipientAddress,omitempty"`
+	RecipientGroupID string      `json:"recipientGroupId,omitempty"`
+	MessageBody      string      `json:"messageBody"`
 	//Attachments []Attachment `json:"attachments"`
 	Quote Quote `json:"quote,omitempty"`
 }
@@ -73,8 +79,8 @@ func (s Subscribe) New() interface{} {
 
 type GetUser struct {
 	Request
-	Username        string `json:"username"`
-	RecipientNumber string `json:"recipientNumber,omitempty"`
+	Username         string      `json:"username"`
+	RecipientAddress JSONAddress `json:"recipientAddress,omitempty"`
 }
 
 func (s GetUser) Type() string {

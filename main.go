@@ -235,7 +235,7 @@ func handleCommand(username, source string, msg map[string]interface{}) {
 		if msg["groupInfo"] != nil {
 			send.RecipientGroupID = groupId
 		} else {
-			send.RecipientNumber = source
+			send.RecipientAddress.Number = source
 		}
 		if err := signalClient.Encode(send); err != nil {
 			log.Print("Failed sending reply: %v", err)
@@ -249,8 +249,10 @@ func keepalive() {
 	}
 	for {
 		req := &signald.GetUser{
-			Username:        cfg.Defaults.Sender,
-			RecipientNumber: cfg.Defaults.Sender,
+			Username: cfg.Defaults.Sender,
+			RecipientAddress: signald.JSONAddress{
+				Number: cfg.Defaults.Sender,
+			},
 		}
 		signalClient.Encode(req)
 		lastKeepAliveID = req.ID
@@ -302,7 +304,7 @@ func handle(m *Message) error {
 			continue
 		}
 		if strings.HasPrefix(to, "tel:") {
-			send.RecipientNumber = to[4:]
+			send.RecipientAddress.Number = to[4:]
 		} else if strings.HasPrefix(to, "group:") {
 			send.RecipientGroupID = to[6:]
 		} else {
