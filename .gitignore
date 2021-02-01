@@ -1,1 +1,7 @@
+# Binary
+
 /alertmanager-webhook-signald
+
+# IDE
+*.code-workspace
+.vscode/
