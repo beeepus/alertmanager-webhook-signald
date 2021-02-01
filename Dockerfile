@@ -1,7 +1,7 @@
 FROM golang:alpine AS builder
 
 WORKDIR /build
-RUN apk --no-cache add git && git clone https://github.com/dgl/alertmanager-webhook-signald.git .
+RUN apk --no-cache add git && git clone https://github.com/Idix/alertmanager-webhook-signald .
 RUN go mod tidy && CGO_ENABLED=0 go build
 
 FROM alpine:3.13
