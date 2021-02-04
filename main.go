@@ -218,7 +218,7 @@ func handleCommand(username, source string, msg map[string]interface{}) {
 		}
 	}
 	if !allowed {
-		log.Print("Ignoring command from unknown source: %q, %v", source, msg)
+		log.Printf("Ignoring command from unknown source: %q, %v", source, msg)
 		return
 	}
 
@@ -238,7 +238,7 @@ func handleCommand(username, source string, msg map[string]interface{}) {
 			send.RecipientAddress.Number = source
 		}
 		if err := signalClient.Encode(send); err != nil {
-			log.Print("Failed sending reply: %v", err)
+			log.Printf("Failed sending reply: %v", err)
 		}
 	}
 }

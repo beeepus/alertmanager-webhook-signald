@@ -28,26 +28,46 @@ type JSONAddress struct {
 }
 
 type Request struct {
-	Type string `json:"type"`
-	ID   string `json:"id"`
+	Type    string `json:"type"`
+	ID      string `json:"id"`
+	Version string `json:"version"`
 }
 
 func (r *Request) SetType(t string) {
 	r.Type = t
+	r.Version = "v0"
 }
 
 func (r *Request) SetID(id int) {
 	r.ID = fmt.Sprintf("%d", id)
 }
 
+// JSONAttachment to send with a message
+type JSONAttachment struct {
+	ID             string `json:"id,omitempty"`
+	Blurhash       string `json:"blurhash,omitempty"`
+	Caption        string `json:"caption,omitempty"`
+	ContentType    string `json:"contentType,omitempty"`
+	CustomFilename string `json:"customFilename,omitempty"`
+	Digest         string `json:"digest,omitempty"`
+	Filename       string `json:"filename,omitempty"`
+	Key            string `json:"key,omitempty"`
+	Size           int    `json:"size,omitempty"`
+	StoredFilename string `json:"storedFilename,omitempty"`
+	VoiceNote      bool   `json:"voiceNote,omitempty"`
+	Height         int    `json:"heigth,omitempty"`
+	Width          int    `json:"width,omitempty"`
+}
+
+// Send message
 type Send struct {
 	Request
-	Username         string      `json:"username"`
-	RecipientAddress JSONAddress `json:"recipientAddress,omitempty"`
-	RecipientGroupID string      `json:"recipientGroupId,omitempty"`
-	MessageBody      string      `json:"messageBody"`
-	//Attachments []Attachment `json:"attachments"`
-	Quote Quote `json:"quote,omitempty"`
+	Username         string           `json:"username"`
+	RecipientAddress JSONAddress      `json:"recipientAddress,omitempty"`
+	RecipientGroupID string           `json:"recipientGroupId,omitempty"`
+	MessageBody      string           `json:"messageBody"`
+	Attachments      []JSONAttachment `json:"attachments,omitempty"`
+	Quote            *Quote           `json:"quote,omitempty"`
 }
 
 func (s Send) Type() string {
@@ -59,9 +79,9 @@ func (s Send) New() interface{} {
 }
 
 type Quote struct {
-	ID     int    `json:"id"`
-	Author string `json:"author"`
-	Text   string `json:"text"`
+	ID     int         `json:"id"`
+	Author JSONAddress `json:"author"`
+	Text   string      `json:"text"`
 }
 
 type Subscribe struct {
