@@ -14,7 +14,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"github.com/dgl/alertmanager-webhook-signald/signald"
+	"github.com/beeepus/alertmanager-webhook-signald/signald"
 )
 
 var (

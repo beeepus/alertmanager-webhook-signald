@@ -6,7 +6,7 @@ This implements an alertmanager webhook that can connect to
 ## Building
 
 ```shell
-go get github.com/dgl/alertmanager-webhook-signald
+go get github.com/beeepus/alertmanager-webhook-signald
 ```
 
 Will give you a *alertmanager-webhook-signald* binary to run, in your Go bin
