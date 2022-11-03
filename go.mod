@@ -1,8 +1,9 @@
-module github.com/beeepus/alertmanager-webhook-signald/v1.2
+module github.com/beeepus/alertmanager-webhook-signald
 
 go 1.13
 
 require (
+	github.com/beeepus/alertmanager-webhook-signald v0.0.0-20210328131701-a6e63f24eb02
 	github.com/cenkalti/backoff v0.0.0-20181003080854-62661b46c409 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8 // indirect
