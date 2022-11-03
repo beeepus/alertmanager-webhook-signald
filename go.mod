@@ -1,4 +1,4 @@
-module github.com/beeepus/alertmanager-webhook-signald/v1.1
+module github.com/beeepus/alertmanager-webhook-signald/v1.2
 
 go 1.13
 
@@ -17,4 +17,3 @@ require (
 	golang.org/x/sys v0.1.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0
 )
-
