@@ -1,4 +1,4 @@
-module github.com/beeepus/alertmanager-webhook-signald
+module github.com/beeepus/alertmanager-webhook-signald/v1.1
 
 go 1.13
 
